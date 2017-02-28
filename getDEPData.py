@@ -23,7 +23,7 @@ def requestToDEPUrl( appNum ):
 def urlToSoup( url ):
     "Takes in URL and returns a soup object of the contents."
     webpage = urllib.request.urlopen( url )
-    soup    = BeautifulSoup( webpage )
+    soup    = BeautifulSoup( webpage, "html.parser" )
     soup.unicode
     return soup
 

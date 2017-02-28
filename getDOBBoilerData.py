@@ -18,8 +18,8 @@ def requestToDOBUrl( boroNum, houseNum, houseStreet ):
 def urlToSoup( url ):
     "Takes in URL and returns a soup object of the contents."
     webpage = urllib.request.urlopen( url )
-    soup = BeautifulSoup( webpage )
-    soup.unicode
+    soup = BeautifulSoup( webpage.read(), "html.parser" )
+    # soup.unicode
     return soup
 
 def hasDOBData( soup ):

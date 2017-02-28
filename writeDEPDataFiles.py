@@ -1,13 +1,13 @@
-import urllib.request
 import csv
-from bs4 import BeautifulSoup
+import os
 from getDEPData import *
 
-urlBase = "file:///C:/DEPData/"
-outputPathBase = "C:/"
+outputPathBase = os.path.join(os.path.dirname(__file__), 'DEPData/')
+urlBase = "file://"+outputPathBase
 
 def tryAndAddDEPApplication( urlPrefix, appPrefix, i, urlSuffix, data ):
     url = urlPrefix + appPrefix + str(i).zfill(4) + urlSuffix
+    print(url)
     try:
         soup = urlToSoup(url)
         if hasDEPData( soup ):
@@ -35,7 +35,7 @@ for appYear in range( 1965, 2016 ):
                 "Burner Make and Model", "Number of Identical Units",
                 "Building Alias"])
 
-    for i in range(1,5000):
+    for i in range(1,5):
         
         if appYear < 2000:
             tryAndAddDEPApplication( urlPrefix, "CA", i, urlSuffix, data )
