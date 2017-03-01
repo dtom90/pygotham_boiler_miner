@@ -4,17 +4,24 @@ Code base for importing NYC boiler licence data from the NYC DOB BIS and the NYC
 The slides for a presentation describing this code can be found at [this link](https://docs.google.com/presentation/d/1hY2lQsHEirp1SxdUd9F1-WSxGsUWcq0QxQc5Pa5s4Eg/edit?usp=sharing).
 
 
-###Modifications by dtom90:
-All DEP data is now stored in ./DEPData
-
-To get DOB Boiler data for a particular address:
+###NYC DOB Boiler Data:
+Example in [test_DOB.py](https://github.com/dtom90/pygotham_boiler/blob/master/test_DOB.py) to get DOB Boiler data for a particular address:
 ```
 from getDOBBoilerData import getDOBBoilerData
-getDOBBoilerData( boroNum, houseNum, houseStreet )
-```
 
-To get the first 5 DEP boiler application records for each year:
+for line in getDOBBoilerData(1, "55", "Central Park West"):
+    print(line)
 ```
-python3 storeDEPDataHTML.py
-python3 writeDEPDataHTML.py
+NOTE: Due to server latency, the function call on the second line may need to be repeated a few times to work properly.
+
+###NYC DEP Boiler Data:
+Example in [test_DEP.py](https://github.com/dtom90/pygotham_boiler/blob/master/test_DEP.py) to get the first 5 DEP boiler application records for each year:
 ```
+import storeDEPDataHTML
+import writeDEPDataFiles
+from getDEPData import getDEPData
+
+print(getDEPData('CB000115'))
+```
+NOTE: This will take a while to complete
+All DEP data is stored in ./DEPData

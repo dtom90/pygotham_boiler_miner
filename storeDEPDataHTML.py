@@ -1,10 +1,13 @@
+#!/usr/bin/python
 from bs4 import BeautifulSoup
 import urllib.request
 import os
 
 siteBase = "https://a826-web01.nyc.gov/DEP.BoilerInformationExt/Home/Success/"
 pathBase = os.path.join(os.path.dirname(__file__), 'DEPData/')
+print('Importing data for years...')
 for year in range( 1965, 2016 ):
+    print(year)
     siteEnd = str( year % 100 ).zfill( 2 )
     pathPrefix = ( pathBase + str( year // 100 ) + "xx/" +
                    str( year // 10 ) + "x/" + str( year ) + "/" )

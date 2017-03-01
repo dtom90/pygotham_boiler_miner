@@ -1,5 +1,9 @@
 import urllib.request
 from bs4 import BeautifulSoup
+import os
+
+outputPathBase = os.path.join(os.path.dirname(__file__), 'DEPData/')
+urlPrefix = "file://"+outputPathBase
 
 def getDEPData( appNum ):
     url = requestToDEPUrl( appNum )
@@ -11,7 +15,6 @@ def getDEPData( appNum ):
 
 def requestToDEPUrl( appNum ):
     "This assumes the appNumber is known to be a valid DEP application number."
-    urlPrefix = "file:///C:/DEPData/"
     appYear   = int( appNum[-2:] )
     if appYear > 65:
         return ( urlPrefix + "19xx/19" + appNum[-2] + "x/"+
