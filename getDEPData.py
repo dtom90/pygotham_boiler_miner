@@ -77,13 +77,15 @@ def extractDEPDataFromSoup( soup ):
     
     applicationData = tables[2].find_all("td") #Grab individual table entries.
 
-    allDEPData = [ ( i.get_text()         #Get the text,
-	              .replace('\r','')   #then remove the '\r's,
-                      .replace('\n','')   #then remove the '\n's,
-	              .partition(': ')[2] #then remove everything before ": ",
-	              .partition('  ')[0] #and finally remove trailing spaces.
-                    )
-	            for i in applicationData ]
-    del allDEPData[-2] #Field is known to always be empty. Remove from output.
+    allDEPData = []
+    for i in applicationData:
+        txt = i.get_text()         # Get the text,
+        if ':' in txt:
+            allDEPData.append(txt
+                              .replace('\r', '')  # then remove the '\r's,
+                              .replace('\n', '')  # then remove the '\n's,
+                              .partition(':')[2]  # then remove everything before ":",
+                              .strip()  # strip it
+                              )
 
     return allLocationData + allDEPData

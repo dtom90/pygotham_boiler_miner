@@ -30,10 +30,11 @@ for appYear in range( 1965, 2016 ):
     f = open(outputPath + "Applications" + str(appYear) + ".csv", "w", newline = '')
     data = csv.writer(f)
     data.writerow(["Building Address", "Boro", "BIN", "Block", "Lot",
-                "Application Number", "Application Type", "Owner",
-                "Issue Date", "Expiration Date", "Application Status",
+                "Owner", "Application Number", "Application Type",
+                "Expiration Date", "Business Type", "Request Type",
+                "Application Status", "Submitted Date", "Decision Date",
                 "Boiler Make and Model", "Primary Fuel", "Secondary Fuel",
-                "Burner Make and Model", "Number of Identical Units",
+                "Heat Input", "Burner Make and Model", "Number of Identical Units",
                 "Building Alias"])
 
     for i in range(1,5):
